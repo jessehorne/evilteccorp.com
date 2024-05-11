@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Evil Tec Corp. | Only evil can provide services this cheap!</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Reddit+Mono:wght@200..900&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="/public/style.css">
+</head>
+<body>
+<div class="left-container">
+    <h1>API Documentation</h1>
+
+    <div>
+        Welcome, new employee. By registering an account you have proven that you have what it takes to last here at Evil Tec Corp. as a software engineer.
+    </div>
+
+    <div>
+        By participating in our Employment Challenge System you agree to never talk about this to anyone and plead the fifth when those pesky state officials come knocking on your door, which they might!
+    </div>
+
+    <div>
+        Each employee will only receive wages when each project assigned to the employee is completed. The amount you will earn depends on the project and will be specified when details are shared. Each employee will be paid in Evil-Coins, an online-only currency that we control in a centralized database. Our Evil-Coin to USD converter is down, due to the strikes.
+    </div>
+
+    <br>
+
+    <h2>Useful Endpoints</h2>
+
+    <h3>Get Token</h3>
+
+    <div>Almost all endpoints require an Authorization header of `Bearer: YOUR TOKEN`. Tokens are only valid for 1 hour.</div>
+    <div class="json">
+        <pre>
+POST https://evilteccorp.com/api/token
+{
+    "email": "YOUR_EMAIL_HERE",
+    "password": "YOUR_PASSWORD HERE"
+}
+        </pre>
+    </div>
+
+    <hr>
+
+    <h3>Get Employee Information</h3>
+
+    <div>Get information about yourself including how many evil coins you have.</div>
+    <div class="json">
+        <pre>
+GET https://evilteccorp.com/api/employee
+{}
+        </pre>
+    </div>
+
+    <hr>
+
+    <h3>Get a Job!</h3>
+
+    <div>Unlike those pesky offshore strikers, you like to work for a living! Please be patient as we add more jobs. This new portal is new and underdeveloped.</div>
+    <div class="json">
+        <pre>
+GET https://evilteccorp.com/api/job
+{}
+        </pre>
+    </div>
+
+    <div class="copyright-not-sticky">Copyright (c) 2024 evilteccorp.com | <a href="https://github.com/jessehorne/evilteccorp.com">GitHub</a></div>
+
+</div>
+</body>
+</html>

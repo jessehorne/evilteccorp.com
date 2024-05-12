@@ -1,0 +1,12 @@
+CREATE TABLE IF NOT EXISTS projects (
+    id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    updated_at DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+    deleted_at TIMESTAMP NULL,
+
+    title VARCHAR(255),
+    description TEXT,
+    answer VARCHAR(255),
+    tags TEXT,
+    reward int
+);

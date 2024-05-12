@@ -1,7 +1,6 @@
 package database
 
 import (
-	"github.com/joho/godotenv"
 	"gorm.io/driver/mysql"
 	"gorm.io/gorm"
 
@@ -13,11 +12,6 @@ import (
 var GDB *gorm.DB
 
 func GetDSN() string {
-	err := godotenv.Load()
-	if err != nil {
-		return ""
-	}
-
 	user := os.Getenv("DB_USER")
 	pass := os.Getenv("DB_PASS")
 	host := os.Getenv("DB_HOST")

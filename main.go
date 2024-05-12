@@ -5,13 +5,18 @@ import (
 	"evilteccorp.com/routes"
 	"fmt"
 	"github.com/gin-gonic/gin"
+	"github.com/joho/godotenv"
 	"net/http"
 	"os"
 )
 
 func main() {
-	err := database.InitGDB()
-	if err != nil {
+	if err := godotenv.Load(); err != nil {
+		fmt.Println(err)
+		os.Exit(1)
+	}
+
+	if err := database.InitGDB(); err != nil {
 		fmt.Println(err)
 		os.Exit(1)
 	}
@@ -33,6 +38,8 @@ func main() {
 	r.GET("/api", func(c *gin.Context) {
 		c.HTML(http.StatusOK, "api.html", nil)
 	})
+
+	r.POST("/api/project", routes.PostProject)
 
 	r.POST("/api/register", routes.PostRegister)
 	r.POST("/api/token", routes.PostToken)

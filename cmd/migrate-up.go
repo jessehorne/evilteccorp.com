@@ -3,6 +3,7 @@ package main
 import (
 	"evilteccorp.com/database"
 	"fmt"
+	"github.com/joho/godotenv"
 	"os"
 
 	_ "github.com/go-sql-driver/mysql"
@@ -12,6 +13,11 @@ import (
 )
 
 func main() {
+	if err := godotenv.Load(); err != nil {
+		fmt.Println(err)
+		os.Exit(1)
+	}
+
 	db, err := database.InitDB()
 	if err != nil {
 		fmt.Println("problem with database:", err)

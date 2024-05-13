@@ -56,8 +56,6 @@ func GetProject(c *gin.Context) {
 }
 
 type PostProjectRequest struct {
-	Key string `json:"key" validate:"required"`
-
 	Title       string `json:"title" validate:"required"`
 	Description string `json:"description" validate:"required"`
 	Answer      string `json:"answer" validate:"required"`
@@ -90,7 +88,7 @@ func PostProject(c *gin.Context) {
 		return
 	}
 
-	if body.Key != os.Getenv("PROJECT_KEY") {
+	if c.GetHeader("Authorization") != os.Getenv("PROJECT_KEY") {
 		c.JSON(http.StatusUnauthorized, gin.H{
 			"error": "nice try bud",
 		})

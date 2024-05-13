@@ -6,6 +6,7 @@ import (
 	"fmt"
 	"github.com/gin-gonic/gin"
 	"github.com/joho/godotenv"
+	"log"
 	"net/http"
 	"os"
 )
@@ -48,5 +49,10 @@ func main() {
 	r.POST("/api/register", routes.PostRegister)
 	r.POST("/api/token", routes.PostToken)
 
-	r.Run(":3000")
+	if os.Getenv("HTTPS") == "false" {
+		r.Run(":3000")
+	} else {
+		log.Fatal(r.RunTLS(":443",
+			os.Getenv("SSL_PEM_PATH"), os.Getenv("SSL_KEY_PATH")))
+	}
 }

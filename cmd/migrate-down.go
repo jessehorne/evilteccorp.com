@@ -37,6 +37,5 @@ func main() {
 
 	if err := m.Down(); err != nil {
 		fmt.Println("couldn't run migrations:", err)
-		os.Exit(1)
 	}
 }

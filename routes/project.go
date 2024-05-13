@@ -1,13 +1,58 @@
 package routes
 
 import (
+	"database/sql"
 	"evilteccorp.com/database"
 	"evilteccorp.com/database/models"
+	"evilteccorp.com/helper"
 	"github.com/gin-gonic/gin"
 	"github.com/go-playground/validator/v10"
 	"net/http"
 	"os"
 )
+
+func GetProject(c *gin.Context) {
+	user, err := helper.GetUserFromRequest(c)
+
+	if err != nil {
+		c.JSON(http.StatusUnauthorized, gin.H{
+			"error": "something went wrong grabbing your user",
+		})
+		return
+	}
+
+	if user == nil {
+		c.JSON(http.StatusUnauthorized, gin.H{
+			"error": "nice try bud",
+		})
+		return
+	}
+
+	// get random project that hasn't been completed by this user
+	raw := `
+	SELECT * FROM projects
+	WHERE id NOT IN (
+	  SELECT project_id FROM solutions WHERE user_id = @user_id
+	)
+	ORDER BY RAND()
+	LIMIT 1;
+	`
+
+	var project models.Project
+	result := database.GDB.Raw(raw, sql.Named("user_id", user.ID)).First(&project)
+	if result.RowsAffected == 0 {
+		c.JSON(http.StatusNotFound, gin.H{
+			"error": "We at Evil Tec Corp. are very sorry. There are currently no jobs available.",
+		})
+		return
+	}
+
+	c.JSON(http.StatusOK, gin.H{
+		"title":       project.Title,
+		"description": project.Description,
+		"reward":      project.Reward,
+	})
+}
 
 type PostProjectRequest struct {
 	Key string `json:"key" validate:"required"`

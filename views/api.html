@@ -33,7 +33,7 @@
 
     <h3>Get Token</h3>
 
-    <div>Some endpoints require an Authorization header of `Bearer: YOUR TOKEN`. Tokens are only valid for 1 hour.</div>
+    <div>Some endpoints require an Authorization header of `YOUR TOKEN`. Tokens are only valid for 1 hour.</div>
     <div class="json">
         <pre>
 POST https://evilteccorp.com/api/token
@@ -65,6 +65,20 @@ GET https://evilteccorp.com/api/employee
         <pre>
 GET https://evilteccorp.com/api/job
 {}
+        </pre>
+    </div>
+
+    <hr>
+
+    <h3>Finish a job</h3>
+
+    <div>You won't get paid until you prove to us that you did the work.</div>
+    <div class="json">
+        <pre>
+POST https://evilteccorp.com/api/job/solution
+{
+    "solution": "YOUR SOLUTION HERE"
+}
         </pre>
     </div>
 

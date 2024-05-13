@@ -11,6 +11,8 @@
 
 Welcome, software engineers, to Evil Tec Corp. We're a fast-paced tech startup looking for top talent to help us conquer...erm...revolutionize the software industry. We pay you evilcoins to do the dirty work.
 
+Join us on Discord (https://discord.gg/EKZPtQJAbr)!
+
 # Development
 
 Requirements: **Go + MySQL**

@@ -63,7 +63,7 @@ GET https://evilteccorp.com/api/employee
     <div>Unlike those pesky offshore strikers, you like to work for a living! Please be patient as we add more jobs. This new portal is new and underdeveloped.</div>
     <div class="json">
         <pre>
-GET https://evilteccorp.com/api/job
+GET https://evilteccorp.com/api/project
 {}
         </pre>
     </div>
@@ -75,8 +75,9 @@ GET https://evilteccorp.com/api/job
     <div>You won't get paid until you prove to us that you did the work.</div>
     <div class="json">
         <pre>
-POST https://evilteccorp.com/api/job/solution
+POST https://evilteccorp.com/api/project/solution
 {
+    "project_id": "PROJECT ID HERE",
     "solution": "YOUR SOLUTION HERE"
 }
         </pre>

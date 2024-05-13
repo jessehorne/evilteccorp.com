@@ -41,6 +41,7 @@ func main() {
 
 	r.POST("/api/project", routes.PostProject)
 	r.GET("/api/project", routes.GetProject)
+	r.POST("/api/project/solution", routes.PostSolution)
 
 	r.POST("/api/register", routes.PostRegister)
 	r.POST("/api/token", routes.PostToken)

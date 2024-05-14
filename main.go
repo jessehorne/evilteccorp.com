@@ -50,7 +50,7 @@ func main() {
 	r.POST("/api/token", routes.PostToken)
 
 	if os.Getenv("HTTPS") == "false" {
-		log.Fatal(r.Run(":3000"))
+		log.Fatal(r.Run(":" + os.Getenv("APP_PORT")))
 	} else {
 		log.Fatal(r.RunTLS(":443",
 			os.Getenv("SSL_PEM_PATH"), os.Getenv("SSL_KEY_PATH")))

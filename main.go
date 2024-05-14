@@ -53,6 +53,6 @@ func main() {
 		log.Fatal(r.Run(":" + os.Getenv("APP_PORT")))
 	} else {
 		log.Fatal(r.RunTLS(":443",
-			os.Getenv("SSL_PEM_PATH"), os.Getenv("SSL_KEY_PATH")))
+			os.Getenv("SSL_FULL_PATH"), os.Getenv("SSL_KEY_PATH")))
 	}
 }

@@ -52,6 +52,7 @@ func GetProject(c *gin.Context) {
 		"title":       project.Title,
 		"description": project.Description,
 		"reward":      project.Reward,
+		"id":          project.ID,
 	})
 }
 

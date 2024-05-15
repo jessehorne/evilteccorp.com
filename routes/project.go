@@ -96,19 +96,16 @@ func PostProject(c *gin.Context) {
 	}
 
 	// create project
-	result := database.GDB.Create(&models.Project{
-		Title:       body.Title,
-		Description: body.Description,
-		Answer:      body.Answer,
-		Tags:        body.Tags,
-		Reward:      body.Reward,
-	})
-
-	if result.Error != nil {
-		c.JSON(http.StatusBadRequest, gin.H{
-			"error": "db err",
+	var p models.Project
+	result := database.GDB.Where("title = ?", body.Title).First(&p)
+	if result.RowsAffected == 0 {
+		database.GDB.Create(&models.Project{
+			Title:       body.Title,
+			Description: body.Description,
+			Answer:      body.Answer,
+			Tags:        body.Tags,
+			Reward:      body.Reward,
 		})
-		return
 	}
 
 	c.JSON(http.StatusOK, nil)

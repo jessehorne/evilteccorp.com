@@ -4,6 +4,7 @@ import (
 	"evilteccorp.com/database"
 	"evilteccorp.com/database/models"
 	"evilteccorp.com/helper"
+	"fmt"
 	"github.com/gin-gonic/gin"
 	"github.com/go-playground/validator/v10"
 	_ "github.com/go-playground/validator/v10"
@@ -56,6 +57,7 @@ func PostRegister(c *gin.Context) {
 	})
 
 	if result.Error != nil {
+		fmt.Println(result.Error)
 		c.JSON(http.StatusBadRequest, gin.H{
 			"error": "something went wrong with gorm",
 		})
